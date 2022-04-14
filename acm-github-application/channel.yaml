@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo-ns-helm-git-ch
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  name: git-helm-ch
+  namespace: demo-ns-helm-git-ch
+spec:
+  pathname: 'https://github.com/fxiang1/app-samples.git'
+  type: Git
