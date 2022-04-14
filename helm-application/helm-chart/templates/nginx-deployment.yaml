@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: urlshortener-deployment
+  name: simple-deployment
 spec:
   selector:
     matchLabels:
-      app: urlshortener
+      app: simple-deployment-app
   replicas: {{ int .Values.replicas }} # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: nginx
+        app: simple-deployment-app
     spec:
       containers:
-      - name: urlshortener
-        image: quay.io/myan/urlshortener-front
-        ports:
-        - containerPort: 80
+      - name: busybox
+        image: busybox
+        command:
+            - sleep
+            - "36000"
